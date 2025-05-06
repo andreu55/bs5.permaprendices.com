@@ -1,0 +1,41 @@
+# Site settings
+title: Permaprendices
+description: A Jekyll starter project for GitHub Pages with Bootstrap 5 baked right in.
+url: "https://permaprendices.com" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+permalink: "/:title/"
+logo: 'assets/img/logo.png'
+lang: es
+
+locale: es_ES
+timezone: Europe/Madrid # Necesita la gem 'tzinfo-data'
+
+favicon: 'assets/favicon.ico'
+
+twitter: permaprendices
+
+feed:
+  path: feed.xml
+  excerpt_only: true
+
+# Build settings
+markdown: kramdown
+
+# SASS
+sass:
+  style: :compressed
+
+# Defaults
+defaults:
+  - scope:
+      path: "*"
+    values:
+      layout: default
+
+# Exclude
+exclude:
+  - assets/js/bootstrap.bundle.min.js
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md

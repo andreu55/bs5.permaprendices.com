@@ -1,0 +1,23 @@
+---
+---
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
+@import "variables";
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons";
+
+blockquote {
+    border-left: 4px solid #d16ba5;
+    // background-color: #fceffc;
+    // background-color: #f8e6f0;
+    // background-color: #f9d6cc;
+    background-color: #ffe6e0;
+    padding: 1em 1.5em;
+    margin-left: 1rem;
+    font-style: italic;
+    color: #333;
+}
+
+blockquote p {
+    margin-bottom: 0;
+}
