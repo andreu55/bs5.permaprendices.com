@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Markdown demo post
+image: assets/img/image.jpg
 ---
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.Superscript<sup>2</sup> and subscript<sub>2</sub> is also possible, and so are footnotes[^first].

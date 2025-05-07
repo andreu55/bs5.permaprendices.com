@@ -1,22 +1,13 @@
-{%- assign url = '/' | relative_url | prepend: site.url -%}
-{%- assign title = site.title -%}
-{%- assign description = site.description -%}
-{%- assign image = '/assets/img/image.jpg' | relative_url | prepend: site.url -%}
-
-{%- if page.url != '/' -%}
-  {%- if page.url -%}
-    {%- assign url = page.url | relative_url | prepend: site.url -%}
-  {%- endif -%}
-  {%- if page.title -%}
-    {%- assign title = page.title | append: ' | ' | append: site.title  -%}
-  {%- endif -%}
-  {%- if page.description -%}
-    {%- assign description = page.description -%}
-  {%- endif -%}
+{%- assign page_url = page.url | default: '/' -%}
+{%- assign url = page_url | relative_url | prepend: site.url -%}
+{%- assign title = page.title | default: site.title -%}
+{%- if page.title -%}
+  {%- assign title = page.title | append: ' | ' | append: site.title -%}
 {%- endif -%}
+{%- assign description = page.description | default: site.description -%}
 
 <!doctype html>
-<html lang="en">
+<html lang="{{ site.lang | default: 'es' }}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,19 +31,26 @@
     <meta property="twitter:site" content="@{{ site.twitter }}">
     <meta property="twitter:image" content="{{ image }}">
     <link rel="shortcut icon" href="{{ site.favicon | relative_url }}">
+
+    <!-- <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | relative_url }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | relative_url }}">
+    <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}"> -->
+
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     <title>{{ title }}</title>
   </head>
   <body>
-    <header class="navbar navbar-light bg-white border-bottom shadow-sm">
+    <header class="navbar navbar-light bg-white border-bottom shadow-sm" role="banner">
       <div class="container">
         <a class="navbar-brand" href="{{ '/' | relative_url }}">
-          <img src="{{ site.logo | relative_url }}" alt="Bootstrap" width="40" height="40"> {{ site.title }}
+          <img src="{{ site.logo | relative_url }}" alt="{{ site.title }} logo" width="40" height="40"> {{ site.title }}
         </a>
       </div>
     </header>
-    {{ content }}
-    <footer class="navbar navbar-light bg-light bg-gradient fixed-bottom">
+    <main role="main">
+      {{ content }}
+    </main>
+    <footer class="navbar navbar-light bg-light bg-gradient sticky-footer">
       <div class="container">
         <p class="m-0"><small>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</small></p>
       </div>

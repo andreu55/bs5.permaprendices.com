@@ -7,12 +7,8 @@ title: Home
     <h1 class="display-4">{{ site.title }}</h1>
     <p class="lead">{{ site.description }}</p>
     <hr class="my-4">
-    <p>{{ site.title }} solves the confusing task of integrating Bootstrap with Jekyll by doing the integration for you - <i>the right way</i>.</p>
+    <p>{{ site.title }} {{ site.description }}</p>
     <div class="d-grid gap-2 d-md-block">
-      <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#modal">
-        {% include icon.html name='info-circle-fill' %}
-        Learn more
-      </button>
       <a href="https://github.com/robertlove/jekyll-bootstrap" class="btn btn-outline-dark" target="_blank">
         {% include icon.html name='github' %}
         View on GitHub
@@ -20,34 +16,22 @@ title: Home
     </div>
   </div>
 </div>
-<nav>
-  <ul class="posts-list">
+
+
+<!-- Mostramos los posts -->
+<div class="container">
+  <div class="posts-list">
     {% for post in site.posts %}
-    <li>
-      <span class="date">{{ post.date | date: "%F" }}</span>:
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    </li>
+    <a href="{{ post.url | relative_url }}">
+      <div class="card" style="width: 18rem;">
+        <img src="{{ post.image | relative_url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+          <small>{{ post.date | date: "%F" }}</small>
+        </div>
+      </div>
+    </a>
     {% endfor %}
-  </ul>
-</nav>
-<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modal-label">Learn more</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">Want all the gory details? Head over to the <a href="https://github.com/robertlove/jekyll-bootstrap">{{ site.title }} GitHub repository</a> to get up and running in no time flat.</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">
-          {% include icon.html name='hand-thumbs-down' %}
-          No thanks
-        </button>
-        <a class="btn btn-info" href="https://github.com/robertlove/jekyll-bootstrap">
-          {% include icon.html name='github' %}
-          View on GitHub
-        </a>
-      </div>
-    </div>
   </div>
 </div>
