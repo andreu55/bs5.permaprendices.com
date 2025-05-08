@@ -40,13 +40,73 @@
     <title>{{ title }}</title>
   </head>
   <body>
-    <header class="navbar navbar-light bg-white border-bottom shadow-sm" role="banner">
+    <header class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" role="banner">
       <div class="container">
-        <a class="navbar-brand" href="{{ '/' | relative_url }}">
-          <img src="{{ site.logo | relative_url }}" alt="{{ site.title }} logo" width="40" height="40"> {{ site.title }}
+        <a class="navbar-brand d-flex align-items-center" href="{{ '/' | relative_url }}">
+          <img src="{{ site.logo | relative_url }}" alt="{{ site.title }} logo" width="40" height="40" class="me-2">
+          <div class="d-none d-sm-block"> | </div>
+          <span class="ms-0 ms-sm-2">
+            
+              {{ site.title }}
+            
+            <!-- <strong class="text-primary">
+              {{ site.title }}
+            </strong> -->
+          </span>
         </a>
+    
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPermaprendices" aria-controls="navbarPermaprendices" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarPermaprendices">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link{% if page.url == '/' %} active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+            </li>
+    
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle{% if page.url contains '/pilares/' %} active{% endif %}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Nuestros pilares
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{{ '/pilares/sintropica/' | relative_url }}">Sintrópica</a></li>
+                <li><a class="dropdown-item" href="{{ '/pilares/comunidad/' | relative_url }}">Comunidad</a></li>
+                <li><a class="dropdown-item" href="{{ '/pilares/disfrute/' | relative_url }}">Disfrute</a></li>
+                <li><a class="dropdown-item" href="{{ '/pilares/espiritualidad/' | relative_url }}">Espiritualidad</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle{% if page.url contains '/servicios/' %} active{% endif %}" href="#" id="navbarLoQueHacemos" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Lo que hacemos
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarLoQueHacemos">
+                <li><a class="dropdown-item" href="{{ '/servicios/asesoria/' | relative_url }}">Asesoría</a></li>
+                <li><a class="dropdown-item" href="{{ '/servicios/divulgacion/' | relative_url }}">Divulgación</a></li>
+                <li><a class="dropdown-item" href="{{ '/servicios/creacion-de-contenidos/' | relative_url }}">Creación de contenidos</a></li>
+                <li><a class="dropdown-item" href="{{ '/servicios/marketing-regenerativo/' | relative_url }}">Marketing regenerativo</a></li>
+                <li><a class="dropdown-item" href="{{ '/servicios/fotografia/' | relative_url }}">Fotografía</a></li>
+              </ul>
+            </li>
+            
+    
+            <li class="nav-item">
+              <a class="nav-link{% if page.url contains '/blog/' %} active{% endif %}" href="{{ '/blog/' | relative_url }}">Blog</a>
+            </li>
+    
+            <li class="nav-item">
+              <a class="nav-link{% if page.url contains '/sobre-nosotros/' %} active{% endif %}" href="{{ '/sobre-nosotros/' | relative_url }}">Sobre nosotros</a>
+            </li>
+    
+            <li class="nav-item">
+              <a class="nav-link" href="https://permaprendices.substack.com" target="_blank" rel="noopener">Newsletter</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </header>
+    
     <main role="main">
       {{ content }}
     </main>
