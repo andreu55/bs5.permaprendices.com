@@ -1,0 +1,35 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+---
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <h1 class="mb-4 text-center">Nuestro Blog</h1>
+    <p class="lead text-center mb-5">Historias, reflexiones y aprendizajes de una vida con más sentido.</p>
+
+    <div class="row g-4">
+      {% for post in site.posts %}
+        <div class="col-md-6 col-lg-4">
+          <a href="{{ post.url | relative_url }}" class="text-decoration-none text-dark">
+            <div class="card h-100 shadow-sm">
+              {% if post.image %}
+                <img src="{{ post.image | relative_url }}" class="card-img-top" alt="{{ post.title }}">
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">
+                  {{ post.excerpt | strip_html | truncatewords: 20 }}
+                </p>
+              </div>
+              <div class="card-footer text-muted">
+                <small>{{ post.date | date: "%d/%m/%Y" }}</small>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
