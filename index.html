@@ -1,42 +1,54 @@
 ---
-title: Home
 layout: default
+title: Home
 ---
 
-<!-- Hero Section -->
-<section class="text-center text-white bg-dark bg-gradient py-5" style="background: url('/assets/img/hero.jpg') no-repeat center center / cover;">
+<!-- <section class="text-center text-white bg-dark bg-gradient py-5">
   <div class="container">
-    <h1 class="display-3 fw-bold">{{ site.title }}</h1>
-    <p class="lead fs-4">{{ site.description }}</p>
-    <a href="#posts" class="btn btn-lg btn-outline-light mt-4">Explora el blog</a>
+    <h1 class="display-4 fw-bold hero-title">{{ site.title }}</h1>
+    <p class="lead">{{ site.description }}</p>
+    <a href="/sobre-nosotros/" class="btn btn-outline-light breathing-btn mt-3">Conócenos</a>
   </div>
+</section> -->
+
+<section class="hero vh-100 d-flex flex-column justify-content-center align-items-center text-center text-white bg-dark position-relative">
+  <div class="overlay"></div>
+  <div class="container position-relative z-1 sombra-texto">
+    <h1 class="display-1 fw-light hero-title text-primary">Permaprendices</h1>
+    <p class="lead fw-light mt-4">
+      Un laboratorio móvil de lo posible.<br>
+      Plantamos dudas, cosechamos fiestas.
+    </p>
+    <p class="mt-4">
+      <a href="/sintropica" class="text-decoration-underline link-light">Suelos que renacen</a> ·
+      <a href="/comunidad" class="text-decoration-underline link-light">Redes que sostienen</a> ·
+      <a href="/disfrute" class="text-decoration-underline link-light">Gozo que transforma</a>
+    </p>
+  </div>
+
+  <a href="#contenido" class="position-absolute bottom-0 mb-4 text-light-50 scroll-down" style="font-size: 2rem;">
+    <i class="bi bi-chevron-down"></i>
+  </a>
 </section>
 
-<!-- Últimos artículos -->
-<section id="posts" class="py-5 bg-light">
-  <div class="container">
-    <h2 class="mb-4 text-center">Últimos artículos</h2>
-    <div class="row g-4">
-      {% for post in site.posts limit:6 %}
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm">
-          {% if post.image %}
-            <img src="{{ post.image | relative_url }}" class="card-img-top" alt="{{ post.title }}">
-          {% endif %}
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">{{ post.title }}</h5>
-            <p class="card-text">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
-            <div class="mt-auto">
-              <a href="{{ post.url | relative_url }}" class="btn btn-sm btn-outline-primary">Leer más</a>
-            </div>
-          </div>
-          <div class="card-footer text-muted">
-            {{ post.date | date: "%d %b %Y" }}
-          </div>
+<section class="container py-5">
+  <div class="row g-4">
+    {% for post in site.posts limit:3 %}
+    <div class="col-md-4">
+      <div class="card post-card h-100 shadow-sm border-0">
+        <a href="{{ post.url | relative_url }}">
+          <img src="{{ post.image | relative_url }}" class="card-img-top" alt="{{ post.title }}">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+        </div>
+        <div class="card-footer bg-white border-0 d-grid gap-2">
+          <a href="{{ post.url | relative_url }}" class="btn btn-sm btn-outline-primary breathing-btn">Leer más</a>
         </div>
       </div>
-      {% endfor %}
     </div>
+    {% endfor %}
   </div>
 </section>
 

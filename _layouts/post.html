@@ -1,0 +1,144 @@
+---
+layout: default
+---
+
+<!-- Begin Article -->
+<div class="container py-5 mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+
+            {% assign author = site.authors[page.author] %}
+
+            <article class="post-content">
+                <!-- Post Header -->
+                <header class="mb-4">
+                    <!-- Featured Image (Optional) -->
+                    {% if page.image %}
+                        <img class="img-fluid rounded mb-4 shadow-sm" src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+                    {% endif %}
+
+                    <!-- Title -->
+                    <h1 class="display-5 fw-bold">{{ page.title }}</h1>
+                    <!-- Subtitle -->
+                    {% if page.subtitle %}
+                        <p class="lead text-muted">{{ page.subtitle }}</p>
+                    {% endif %}
+
+                    <!-- Post Meta -->
+                    <div class="d-flex align-items-center mt-3 mb-4 text-muted small">
+                        {% if page.author and author %}
+                            <img class="rounded-circle me-2" src="{{ author.avatar | relative_url }}" alt="{{ author.display_name }}" style="width: 40px; height: 40px; object-fit: cover;">
+                            <span>
+                                <a href="{{ author.web }}" target="_blank" class="text-muted text-decoration-none">{{ author.display_name }}</a>
+                                <span class="mx-1">&bull;</span>
+                            </span>
+                        {% endif %}
+                        <time datetime="{{ page.date | date_to_xmlschema }}">
+                            {{ page.date | date: "%B %-d, %Y" }}
+                        </time>
+                        {% if page.last_modified_at %}
+                            <span class="mx-1">&bull;</span>
+                            <span>Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%B %-d, %Y" }}</time></span>
+                        {% endif %}
+                    </div>
+                </header>
+
+                <!-- Post Content -->
+                <div class="article-body serif-font">
+                    {{ content }}
+                </div>
+
+                <!-- Post Footer -->
+                <footer class="mt-5 pt-4 border-top">
+                    <!-- Categories -->
+                    {% if page.categories.size > 0 %}
+                    <div class="mb-4">
+                        <h6 class="text-uppercase small fw-bold mb-2">Categories:</h6>
+                        <ul class="list-inline">
+                            {% assign sortedCategories = page.categories | sort %}
+                            {% for category in sortedCategories %}
+                            <li class="list-inline-item">
+                                <a href="{{ site.baseurl }}/categories#{{ category | slugify }}" class="badge bg-secondary text-decoration-none text-white">{{ category }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                    <!-- Tags (Similar to categories, if you use them) -->
+                    {% if page.tags.size > 0 %}
+                    <div class="mb-4">
+                        <h6 class="text-uppercase small fw-bold mb-2">Tags:</h6>
+                        <ul class="list-inline">
+                            {% assign sortedTags = page.tags | sort %}
+                            {% for tag in sortedTags %}
+                            <li class="list-inline-item">
+                                <a href="{{ site.baseurl }}/tags#{{ tag | slugify }}" class="badge bg-light text-dark text-decoration-none border">{{ tag }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                    <!-- Author Box -->
+                    {% if page.author and author %}
+                    <div class="card my-4 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                    <img class="rounded-circle" src="{{ author.avatar | relative_url }}" alt="{{ author.display_name }}" style="width: 80px; height: 80px; object-fit: cover;">
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h5 class="card-title mb-0">
+                                        <a href="{{ author.web }}" target="_blank" class="text-dark text-decoration-none">{{ author.display_name }}</a>
+                                    </h5>
+                                    {% if author.description %}
+                                    <p class="card-text text-muted small mt-1 mb-0">{{ author.description }}</p>
+                                    {% endif %}
+                                    <!-- Add social links if available in author data -->
+                                    <!--
+                                    {% if author.twitter %}
+                                        <a href="{{ author.twitter }}" target="_blank" class="btn btn-sm btn-outline-secondary mt-2">Follow on X</a>
+                                    {% endif %}
+                                    -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Prev/Next Navigation -->
+                    <nav class="row mt-4" aria-label="Post navigation">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            {% if page.previous.url %}
+                            <a href="{{ page.previous.url | relative_url }}" class="btn btn-outline-secondary w-100 d-block p-3 text-start">
+                                <small class="text-muted d-block">&laquo; Previous Post</small>
+                                <span class="fw-medium">{{ page.previous.title }}</span>
+                            </a>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            {% if page.next.url %}
+                            <a href="{{ page.next.url | relative_url }}" class="btn btn-outline-secondary w-100 d-block p-3 text-end">
+                                <small class="text-muted d-block">Next Post &raquo;</small>
+                                <span class="fw-medium">{{ page.next.title }}</span>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </nav>
+                </footer>
+
+            </article> <!-- /.post-content -->
+
+            <!-- Comments Section -->
+            {% if page.comments == true %}
+            <section id="comments" class="my-5 pt-4 border-top">
+                <h3 class="mb-4">Comments</h3>
+                {% include disqus.html %}
+            </section>
+            {% endif %}
+
+        </div> <!-- /.col -->
+    </div> <!-- /.row -->
+</div> <!-- /.container -->
+<!-- End Article -->
