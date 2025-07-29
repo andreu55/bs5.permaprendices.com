@@ -1,6 +1,6 @@
 # Site settings
 title: Permaprendices
-description: Un laboratorio móvil de lo posible. Plantamos dudas, cosechamos fiestas.
+description: Un laboratorio móvil de lo posible.
 url: "https://permaprendices.com" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 permalink: "/:title/"
