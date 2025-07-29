@@ -2,23 +2,106 @@
 ---
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
+
+@font-face {
+  font-family: 'PerfectlyVintages';
+  src: url('../Perfectly Vintages Font by Keithzo.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @import "variables";
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons";
 
+body {
+  font-size: 16px;
+}
+
+.main-content {
+  padding-top: 70px; /* Añadido para evitar solapamiento con la navbar fija */
+}
+
+.article-body p {
+  font-size: 19px;
+}
+
 // Esto era para martatornero.com
 blockquote {
-    border-left: 4px solid #d16ba5;
-    // background-color: #fceffc;
-    // background-color: #f8e6f0;
-    // background-color: #f9d6cc;
-    background-color: #ffe6e0;
-    padding: 1em 1.5em;
-    margin-left: 1rem;
-    font-style: italic;
-    color: #333;
+  border-left: 4px solid #d16ba5;
+  // background-color: #fceffc;
+  // background-color: #f8e6f0;
+  // background-color: #f9d6cc;
+  background-color: #ffe6e0;
+  padding: 1em 1.5em;
+  margin-left: 1rem;
+  font-style: italic;
+  color: #333;
 }
 
 blockquote p {
-    margin-bottom: 0;
+  margin-bottom: 0;
+}
+
+.hero {
+  background-image: url('/assets/img/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  // background-color: rgba(0, 0, 0, 0.05); /* oscurecimiento */
+  // backdrop-filter: blur(2.5px);
+  // -webkit-backdrop-filter: blur(2.5px);  
+  z-index: 0; /* detrás del texto */
+}
+
+.hero-title {
+  font-family: 'PerfectlyVintages', serif;
+  letter-spacing: 3px;
+}
+
+.sombra-texto {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+// .perma {
+//   color: #429670;
+//   display: inline-block;
+// }
+// .aprendizaje {
+//   color: #d45105;
+//   font-size: 0.85em;
+//   display: inline-block;
+// }
+
+.scroll-down {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* Transiciones suaves */
+.transition-navbar {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estado inicial: transparente */
+.transparent-navbar {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Estado con fondo */
+.solid-navbar {
+  background-color: white !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
 }

@@ -1,0 +1,68 @@
+---
+layout: default
+---
+
+<main class="main-content container pt-5 mt-4">
+
+  <div class="col-lg-10 col-md-12 mx-auto">
+    <div class="article-post serif-font">
+        
+        <div class="row">
+  
+          <!-- Este div estará visible en pantallas medianas (md) o más grandes -->
+          <div class="col-md-6 d-none d-md-block">
+            <div class="card">
+              <img class="rounded mb-4" src="/assets/img/marta.png" alt="Marta">
+              <div class="card-body">
+                <p class="card-text text-muted text-start">
+                  <i class="{{ page.marta_icon }} fa-fw permap-color"></i>
+                  {{ page.marta_text }}
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-6 d-none d-md-block">
+            <div class="card">
+              <img class="rounded mb-4" src="/assets/img/andreu.png" alt="Andreu">
+              <div class="card-body">
+                <p class="card-text text-muted text-start">
+                  <i class="{{ page.andreu_icon }} fa-fw permap-color"></i>
+                  {{ page.andreu_text }}
+                </p>
+              </div>
+            </div>
+          </div>
+                
+          <!-- Este div estará visible solo en pantallas pequeñas (sm) -->
+          <div class="col-md-12 d-block d-md-none">
+            <div class="card">
+              <img class="rounded mb-4" src="/assets/img/marta-arriba.png" alt="Marta2">
+              <div class="card-body">
+                <p class="card-text text-muted text-start">
+                  <i class="fa-solid fa-cat fa-fw permap-color"></i>
+                  {{ page.marta_text }}
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-12 d-block d-md-none">
+            <div class="card">
+              <img class="rounded mb-4" src="/assets/img/andreu-abajo.png" alt="Andreu2">
+              <div class="card-body">
+                <p class="card-text text-muted text-start">
+                  <i class="fa-solid fa-feather-pointed fa-fw permap-color"></i>
+                  {{ page.andreu_text }}
+                </p>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+  
+      {{content}}
+  
+    </div>
+  </div>
+</main>
